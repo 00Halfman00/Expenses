@@ -14,13 +14,116 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseItem.jsx */ "./src/ExpenseItem.jsx");
 
+
+const expenses = [{
+  id: 'e1',
+  title: 'Toilet Paper',
+  amount: 94.12,
+  date: new Date(2020, 7, 14)
+}, {
+  id: 'e2',
+  title: 'New TV',
+  amount: 799.49,
+  date: new Date(2021, 2, 12)
+}, {
+  id: 'e3',
+  title: 'Car Insurance',
+  amount: 294.67,
+  date: new Date(2021, 2, 28)
+}, {
+  id: 'e4',
+  title: 'New Desk (Wooden)',
+  amount: 450,
+  date: new Date(2021, 5, 12)
+}];
 
 const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Two"));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[0]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[1]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[2]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[3]
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./src/EspenseItemDate.jsx":
+/*!*********************************!*\
+  !*** ./src/EspenseItemDate.jsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const ExpenseItemDate = ({
+  date
+}) => {
+  console.dir(date);
+  const month = date.toLocaleString('en-US', {
+    month: 'long'
+  });
+  const day = date.toLocaleString('en-US', {
+    day: 'numeric'
+  });
+  const year = date.getFullYear(); // keep as much of the computation outside of the return
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__date"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, month), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, day), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, year));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItemDate);
+
+/***/ }),
+
+/***/ "./src/ExpenseItem.jsx":
+/*!*****************************!*\
+  !*** ./src/ExpenseItem.jsx ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _EspenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EspenseItemDate.jsx */ "./src/EspenseItemDate.jsx");
+
+
+
+const ExpenseItem = ({
+  expense
+}) => {
+  const [expenseItem, setExpenseItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(expense);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EspenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    date: expenseItem.date
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__title"
+  }, expenseItem.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__amount"
+  }, "$", expenseItem.amount)));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItem);
 
 /***/ }),
 
