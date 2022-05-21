@@ -9,22 +9,41 @@ body {
   background-color: lightgrey;
 }
 
+/*
 .expense-item-container {
-  height: 100px;
+  height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+*/
 
 .expense-item {
-  border-radius: 6px;
+  /*border-radius: 6px; */
   display: flex;
   align-items: center;
   background-color: cornsilk;
   justify-content: space-between;
   padding: 1rem;
+  margin: 0.25rem;
 }
 
+.expense-item__amount {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  width: 75px;
+  background-color: lightgrey;
+  border: solid white 2px;
+  border-radius: 6px;
+}
+
+.expense-item__month,
+.expense-item__title,
+.expense-item__year {
+  font-size: large;
+}
 
 .expense-item__date {
   display: flex;
@@ -32,9 +51,40 @@ body {
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   width: 80px;
   background-color: lightgrey;
+  border: solid white 2px;
   border-radius: 6px;
+}
+
+.expenses {
+  padding: 0.25rem;
+  background-color: white;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  /*border-radius: 12px;
+  box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1); */
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);
+}
+
+@media screen and (max-width: 500px) {
+  .expenses {
+    background-color: black;
+  }
+
+  .expense-item {
+    flex-direction: column;
+    margin: 0.25rem;
+  }
+
+  .expense-item-container {
+    height: auto;
+  }
 }

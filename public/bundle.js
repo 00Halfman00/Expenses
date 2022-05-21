@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseItem.jsx */ "./src/ExpenseItem.jsx");
+/* harmony import */ var _Expenses_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Expenses.jsx */ "./src/Expenses.jsx");
 
 
 const expenses = [{
@@ -40,18 +40,40 @@ const expenses = [{
 }];
 
 const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    expense: expenses[0]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    expense: expenses[1]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    expense: expenses[2]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    expense: expenses[3]
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Expenses_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expenses: expenses
   }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./src/Card.jsx":
+/*!**********************!*\
+  !*** ./src/Card.jsx ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Card = ({
+  children,
+  className
+}) => {
+  const classes = 'card ' + className;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: classes
+  }, children);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Card);
 
 /***/ }),
 
@@ -72,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 const ExpenseItemDate = ({
   date
 }) => {
-  console.dir(date);
+  //console.dir(date);
   const month = date.toLocaleString('en-US', {
     month: 'long'
   });
@@ -83,7 +105,11 @@ const ExpenseItemDate = ({
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "expense-item__date"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, month), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, day), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, year));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__month"
+  }, month), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, day), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__year"
+  }, year));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItemDate);
@@ -103,6 +129,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EspenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EspenseItemDate.jsx */ "./src/EspenseItemDate.jsx");
+/* harmony import */ var _Card_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Card.jsx */ "./src/Card.jsx");
+
 
 
 
@@ -110,9 +138,7 @@ const ExpenseItem = ({
   expense
 }) => {
   const [expenseItem, setExpenseItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(expense);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "expense-item-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Card_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "expense-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EspenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     date: expenseItem.date
@@ -120,10 +146,49 @@ const ExpenseItem = ({
     className: "expense-item__title"
   }, expenseItem.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "expense-item__amount"
-  }, "$", expenseItem.amount)));
+  }, "$", expenseItem.amount));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItem);
+
+/***/ }),
+
+/***/ "./src/Expenses.jsx":
+/*!**************************!*\
+  !*** ./src/Expenses.jsx ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseItem.jsx */ "./src/ExpenseItem.jsx");
+/* harmony import */ var _Card_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Card.jsx */ "./src/Card.jsx");
+
+
+
+
+const Expenses = ({
+  expenses
+}) => {
+  //console.log('Expenses: ', expenses);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Card_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "expenses"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[0]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[1]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[2]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    expense: expenses[3]
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Expenses);
 
 /***/ }),
 
