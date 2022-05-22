@@ -1,5 +1,5 @@
 import React from 'react';
-import Expenses from './Expenses.jsx';
+import Expenses from './EXPENSES/Expenses.jsx';
 
 const expenses = [
   {
@@ -23,12 +23,12 @@ const expenses = [
   },
 ];
 
-const App = () => {
+function App() {
   return (
     <div>
-      <Expenses expenses={expenses}/>
+      <Expenses expenses={expenses} />
     </div>
   );
-};
+}
 
 export default App;

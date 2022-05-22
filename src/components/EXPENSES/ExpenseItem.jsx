@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import ExpenseItemDate from './EspenseItemDate.jsx';
-import Card from './Card.jsx';
+import ExpenseItemDate from './ExpenseItemDate.jsx';
+import Card from '../UI/Card.jsx';
 
-const ExpenseItem = ({ expense }) => {
-  const [expenseItem, setExpenseItem] = useState(expense);
 
+function ExpenseItem(props) {
+  const [expenseItem, setExpenseItem] = useState(props.expense);
+  //console.log('ExpenseItem: ', 'id: ', props.expense.id, props)
   return (
     <Card className="expense-item">
       <ExpenseItemDate date={expenseItem.date} />
@@ -12,6 +13,8 @@ const ExpenseItem = ({ expense }) => {
       <div className="expense-item__amount">${expenseItem.amount}</div>
     </Card>
   );
-};
+}
 
 export default ExpenseItem;
+
+

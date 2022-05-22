@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/App.jsx":
-/*!*********************!*\
-  !*** ./src/App.jsx ***!
-  \*********************/
+/***/ "./src/components/App.jsx":
+/*!********************************!*\
+  !*** ./src/components/App.jsx ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Expenses_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Expenses.jsx */ "./src/Expenses.jsx");
+/* harmony import */ var _EXPENSES_Expenses_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EXPENSES/Expenses.jsx */ "./src/components/EXPENSES/Expenses.jsx");
 
 
 const expenses = [{
@@ -39,20 +39,20 @@ const expenses = [{
   date: new Date(2021, 5, 12)
 }];
 
-const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Expenses_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+function App() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EXPENSES_Expenses_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     expenses: expenses
   }));
-};
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 /***/ }),
 
-/***/ "./src/Card.jsx":
-/*!**********************!*\
-  !*** ./src/Card.jsx ***!
-  \**********************/
+/***/ "./src/components/EXPENSES/ExpenseItem.jsx":
+/*!*************************************************!*\
+  !*** ./src/components/EXPENSES/ExpenseItem.jsx ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -61,26 +61,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ExpenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseItemDate.jsx */ "./src/components/EXPENSES/ExpenseItemDate.jsx");
+/* harmony import */ var _UI_Card_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../UI/Card.jsx */ "./src/components/UI/Card.jsx");
 
 
-const Card = ({
-  children,
-  className
-}) => {
-  const classes = 'card ' + className;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: classes
-  }, children);
-};
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Card);
+
+function ExpenseItem(props) {
+  const [expenseItem, setExpenseItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.expense); //console.log('ExpenseItem: ', 'id: ', props.expense.id, props)
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UI_Card_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "expense-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    date: expenseItem.date
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__title"
+  }, expenseItem.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "expense-item__amount"
+  }, "$", expenseItem.amount));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItem);
 
 /***/ }),
 
-/***/ "./src/EspenseItemDate.jsx":
-/*!*********************************!*\
-  !*** ./src/EspenseItemDate.jsx ***!
-  \*********************************/
+/***/ "./src/components/EXPENSES/ExpenseItemDate.jsx":
+/*!*****************************************************!*\
+  !*** ./src/components/EXPENSES/ExpenseItemDate.jsx ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -91,17 +99,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-const ExpenseItemDate = ({
-  date
-}) => {
-  //console.dir(date);
-  const month = date.toLocaleString('en-US', {
+function ExpenseItemDate(props) {
+  //console.log('ExpenseItemDate: ', props)
+  const month = props.date.toLocaleString('en-US', {
     month: 'long'
   });
-  const day = date.toLocaleString('en-US', {
+  const day = props.date.toLocaleString('en-US', {
     day: 'numeric'
   });
-  const year = date.getFullYear(); // keep as much of the computation outside of the return
+  const year = props.date.getFullYear(); // keep as much of the computation outside of the return
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "expense-item__date"
@@ -110,16 +116,16 @@ const ExpenseItemDate = ({
   }, month), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, day), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "expense-item__year"
   }, year));
-};
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItemDate);
 
 /***/ }),
 
-/***/ "./src/ExpenseItem.jsx":
-/*!*****************************!*\
-  !*** ./src/ExpenseItem.jsx ***!
-  \*****************************/
+/***/ "./src/components/EXPENSES/Expenses.jsx":
+/*!**********************************************!*\
+  !*** ./src/components/EXPENSES/Expenses.jsx ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -128,54 +134,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _EspenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EspenseItemDate.jsx */ "./src/EspenseItemDate.jsx");
-/* harmony import */ var _Card_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Card.jsx */ "./src/Card.jsx");
+/* harmony import */ var _ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseItem.jsx */ "./src/components/EXPENSES/ExpenseItem.jsx");
+/* harmony import */ var _UI_Card_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../UI/Card.jsx */ "./src/components/UI/Card.jsx");
 
 
 
 
-const ExpenseItem = ({
-  expense
-}) => {
-  const [expenseItem, setExpenseItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(expense);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Card_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    className: "expense-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EspenseItemDate_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    date: expenseItem.date
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "expense-item__title"
-  }, expenseItem.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "expense-item__amount"
-  }, "$", expenseItem.amount));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpenseItem);
-
-/***/ }),
-
-/***/ "./src/Expenses.jsx":
-/*!**************************!*\
-  !*** ./src/Expenses.jsx ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExpenseItem.jsx */ "./src/ExpenseItem.jsx");
-/* harmony import */ var _Card_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Card.jsx */ "./src/Card.jsx");
-
-
-
-
-const Expenses = ({
+function Expenses({
   expenses
-}) => {
-  //console.log('Expenses: ', expenses);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Card_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+}) {
+  // good idead to see this children property on props
+  // card does not come into play in props until ExpenseItem, actually Card then ExpenseItem
+  //console.log('Expenses: ', expenses)
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UI_Card_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "expenses"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     expense: expenses[0]
@@ -186,9 +157,35 @@ const Expenses = ({
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ExpenseItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     expense: expenses[3]
   }));
-};
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Expenses);
+
+/***/ }),
+
+/***/ "./src/components/UI/Card.jsx":
+/*!************************************!*\
+  !*** ./src/components/UI/Card.jsx ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function Card(props) {
+  console.log('Card: ', (react__WEBPACK_IMPORTED_MODULE_0___default()));
+  const classes = 'card ' + props.className;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: classes
+  }, props.children);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Card);
 
 /***/ }),
 
@@ -33547,14 +33544,14 @@ if (false) {} else {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!***********************!*\
-  !*** ./src/index.jsx ***!
-  \***********************/
+/*!**********************************!*\
+  !*** ./src/components/index.jsx ***!
+  \**********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _App_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.jsx */ "./src/App.jsx");
+/* harmony import */ var _App_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.jsx */ "./src/components/App.jsx");
 
 
 
